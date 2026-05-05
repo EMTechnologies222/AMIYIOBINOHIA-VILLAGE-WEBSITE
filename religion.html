@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faith & Religion – Amiyi Obinohia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --gold: #C8993A; --deep-green: #1A3A2A; --forest: #2C5F3F; --cream: #FAF6EE; --dark: #111A14; --text: #2E2E2E; --accent: #8B1A1A; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); }
+    nav { position: fixed; top: 0; width: 100%; z-index: 999; background: rgba(26,58,42,0.97); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 68px; border-bottom: 2px solid var(--gold); }
+    .nav-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.25rem; font-weight: 700; letter-spacing: 1px; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #D8CDB8; text-decoration: none; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .page-hero { padding: 140px 5vw 80px; background: linear-gradient(135deg, #0D1A2A 0%, #1A2A4A 100%); position: relative; overflow: hidden; }
+    .page-hero::before { content: 'FAITH'; position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); font-family: 'Playfair Display', serif; font-size: 18vw; font-weight: 900; color: rgba(200,153,58,0.05); white-space: nowrap; user-select: none; }
+    .breadcrumb { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .breadcrumb a { color: rgba(200,153,58,0.6); text-decoration: none; }
+    h1.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+    h1.page-title span { color: var(--gold); }
+    .page-hero-sub { font-size: 1.1rem; color: #9AB8D4; line-height: 1.8; max-width: 600px; }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 80px 5vw; }
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; border-left: 3px solid var(--gold); padding-left: 10px; margin-bottom: 1rem; }
+    h2.s-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--deep-green); line-height: 1.2; margin-bottom: 1.2rem; }
+    .prose p { font-size: 1rem; line-height: 1.95; color: #444; margin-bottom: 1.4rem; }
+    .prose strong { color: var(--dark); }
+    .prose blockquote { border-left: 4px solid var(--gold); padding: 1.2rem 1.5rem; background: rgba(200,153,58,0.06); margin: 2rem 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--forest); line-height: 1.6; }
+    .divider { border: none; border-top: 2px solid rgba(200,153,58,0.2); margin: 4rem 0; }
+
+    /* CHURCH CARD */
+    .church-feature {
+      display: grid; grid-template-columns: 120px 1fr; gap: 2.5rem;
+      background: var(--deep-green); padding: 3rem; margin: 2.5rem 0; align-items: start;
+    }
+    .church-cross { font-size: 4rem; text-align: center; padding-top: 0.5rem; }
+    .church-detail h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); margin-bottom: 0.3rem; }
+    .church-detail .denomination { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #7A9A7A; margin-bottom: 1rem; }
+    .church-detail p { font-size: 0.95rem; color: #9AB09A; line-height: 1.8; margin-bottom: 0.8rem; }
+    .church-detail .minister { background: rgba(200,153,58,0.12); padding: 0.8rem 1.2rem; margin-top: 1rem; font-size: 0.88rem; color: #C8D8B8; }
+    .church-detail .minister strong { color: var(--gold); }
+
+    /* DENOMINATION GRID */
+    .denom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .denom-card { background: #fff; padding: 1.8rem; border-top: 3px solid var(--gold); box-shadow: 0 2px 12px rgba(0,0,0,0.05); text-align: center; }
+    .denom-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--deep-green); margin-bottom: 0.5rem; }
+    .denom-card p { font-size: 0.82rem; color: #777; }
+
+    /* SERMON HIGHLIGHT */
+    .sermon-box { background: rgba(200,153,58,0.06); border: 1px solid rgba(200,153,58,0.25); padding: 2.5rem; margin: 2rem 0; }
+    .sermon-box .ref { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.8rem; }
+    .sermon-box blockquote { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--dark); font-style: italic; line-height: 1.7; border: none; padding: 0; background: none; margin: 0 0 1rem; }
+    .sermon-box .attribution { font-size: 0.85rem; color: #888; }
+
+    footer { background: var(--dark); color: #6B806B; padding: 3rem 5vw; text-align: center; font-size: 0.82rem; margin-top: 4rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-nav a { color: #6B806B; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) { .nav-links { display: none; } .church-feature { grid-template-columns: 1fr; gap: 1rem; } .church-cross { font-size: 2.5rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Amiyi Obinohia</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="culture.html">Culture</a></li>
+    <li><a href="religion.html" class="active">Religion</a></li>
+    <li><a href="economy.html">Economy</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div style="max-width:800px;">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Faith & Religion</div>
+    <h1 class="page-title">Faith &<br><span>Religion</span></h1>
+    <p class="page-hero-sub">From animist roots to vibrant Christian faith — the spiritual story of Amiyi Obinohia and the churches at the heart of community life.</p>
+  </div>
+</div>
+
+<main class="prose">
+
+  <span class="section-tag">From Animism to Christianity</span>
+  <h2 class="s-title">A Spiritual Journey Through Time</h2>
+
+  <p>Before 1914, the people of Amiyi Obinohia — like all Isuikwuato communities — lived within a rich framework of <strong>traditional Igbo spirituality</strong>. Streams, trees, and animals were held sacred. Ancestral spirits guided family decisions. The earth itself was alive with divine presence. This was not superstition — it was a sophisticated cosmology that explained the world, enforced community ethics, and gave meaning to birth, life, and death.</p>
+
+  <p>In <strong>1914</strong>, Christian missionaries from the Methodist and Roman Catholic Missions arrived in Isuikwuato, establishing the first churches and schools in the area. The Methodist Church first landed at Ovim in Isuikwuato. Umuebere Nkuma, a community close to the Amiyi belt, was among the first to be reached through Methodist effort. From there, the gospel moved through kinship networks into Amiyi Obinohia itself.</p>
+
+  <blockquote>At the beginning of the 20th century, Christianity came to the area. The youth were among the first and most eager converts, drawn by both the spiritual message and the access to Western education that came with the mission schools.</blockquote>
+
+  <p>Today, Amiyi Obinohia is <strong>overwhelmingly Christian</strong>, with the Methodist tradition being dominant, followed by Anglican and Assemblies of God presences. The community's spiritual life is woven into every major event — births, marriages, funerals, age grade activities, and community crises all have a prayer dimension.</p>
+
+  <hr class="divider">
+
+  <span class="section-tag">Primary Church</span>
+  <h2 class="s-title">St. Silas Methodist Church</h2>
+
+  <div class="church-feature">
+    <div class="church-cross">⛪</div>
+    <div class="church-detail">
+      <h3>St. Silas Methodist Church</h3>
+      <div class="denomination">Methodist Church Nigeria · Amiyi Obinohia, Isuikwuato LGA</div>
+      <p>St. Silas Methodist Church is the primary and most active church in Amiyi Obinohia. It is the institutional descendant of the 1914 Methodist Mission that first brought Christianity to Isuikwuato. The church serves as the centre of spiritual life, funeral rites, community announcements, and social connection for the village.</p>
+      <p>In October 2024, St. Silas hosted a three-day burial ceremony for Mrs. Sussana Alakweonye. The church was <em>filled to capacity</em> with mourners from across Nigeria and the diaspora — a testament to the church's centrality to community identity and the reach of Amiyi Obinohia's diaspora bonds.</p>
+      <div class="minister">
+        <strong>Host Minister:</strong> Very Rev. Brown Onyekachi &nbsp;|&nbsp;
+        <strong>Associate Minister:</strong> Very Rev. Chima Chukwu
+      </div>
+    </div>
+  </div>
+
+  <div class="sermon-box">
+    <div class="ref">Documented Sermon — October 2024 Wake Service</div>
+    <blockquote>Dealing with the Spirit of Wickedness — enjoining all to shun wickedness, live a life that glorifies God, and draw people to salvation.</blockquote>
+    <div class="attribution">— Very Rev. Brown Onyekachi, St. Silas Methodist Church, Amiyi Obinohia</div>
+  </div>
+
+  <hr class="divider">
+
+  <span class="section-tag">Broader Diocese</span>
+  <h2 class="s-title">The Anglican Connection</h2>
+
+  <p>Through marriage and extended kinship networks, many Amiyi Obinohia families also maintain ties with <strong>St. Stephen's Anglican Church, Amaokwe Amiyi</strong> — the church of the Isiocha Royal Family of the Oguduasa clan. This church falls under the Diocese of Isuikwuato-Umunnechi (Anglican Communion), headed by <strong>Rt. Rev'd. Prof. Prince C.C. Anyim, JP, GDJ.</strong></p>
+
+  <p>In one documented case from May 2025, the funeral of <strong>Nneoma Helen Nwanahiudu Isiocha</strong> (née Anusi Ojiabor) — whose maiden home was Amiyi Obinohia — proceeded first through Amiyi Obinohia for family reception, then to St. Stephen's Anglican Church for the full funeral service presided over by the Bishop. The deceased had been honoured with the prestigious <em>Ezinne title</em> by the Diocese in 2003 in recognition of her service to God and community.</p>
+
+  <hr class="divider">
+
+  <span class="section-tag">Christian Denominations</span>
+  <h2 class="s-title">Faith Across the Community</h2>
+
+  <p>While the Methodist Church is the most prominent in Amiyi Obinohia, the broader Isuikwuato LGA — and by extension Amiyi Obinohia — hosts a spectrum of Christian denominations:</p>
+
+  <div class="denom-grid">
+    <div class="denom-card"><h4>Methodist</h4><p>The founding tradition — St. Silas Methodist Church is the community's primary spiritual home</p></div>
+    <div class="denom-card"><h4>Anglican</h4><p>Present through kinship ties to Amaokwe Amiyi and the Diocese of Isuikwuato-Umunnechi</p></div>
+    <div class="denom-card"><h4>Roman Catholic</h4><p>Arrived in Isuikwuato alongside the Methodists in 1914, from the northern part of the LGA</p></div>
+    <div class="denom-card"><h4>Presbyterian</h4><p>Part of the broader Christian landscape in Isuikwuato LGA</p></div>
+    <div class="denom-card"><h4>Assemblies of God</h4><p>Among the Pentecostal denominations that have grown significantly in recent years</p></div>
+    <div class="denom-card"><h4>God's Vision Assembly</h4><p>Documented as the church of Pastor Sunny Best Anusi — a notable figure from the Amiyi Obinohia family of Anusi Ojiabor</p></div>
+  </div>
+
+  <hr class="divider">
+
+  <span class="section-tag">Traditional Roots</span>
+  <h2 class="s-title">The Legacy of Odinani</h2>
+
+  <p>While Christianity has become universal in Amiyi Obinohia, echoes of traditional Igbo spirituality (<em>Odinani</em>) remain embedded in cultural practices. The very act of <strong>libation</strong> — pouring drink for ancestors — that precedes many community gatherings carries pre-Christian resonance. The insistence on <strong>burying the dead at the family compound</strong> rather than external cemeteries reflects the Igbo belief that the ancestors remain present in the household land.</p>
+
+  <p>The tradition of returning a woman's remains to her <strong>maiden home</strong> before burial carries an ancestral logic: the deceased must be reconnected with the spiritual guardians of her birth lineage before her final journey. Even in a completely Christianized context, this ritual action preserves an older cosmological understanding of death and ancestry.</p>
+
+  <blockquote>Christianity did not erase the Igbo soul — it was absorbed into it. In Amiyi Obinohia, the Bible and the ancestral ways coexist in the heart of every family.</blockquote>
+
+</main>
+
+<footer>
+  <div class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="history.html">History</a>
+    <a href="culture.html">Culture</a>
+    <a href="religion.html">Religion</a>
+    <a href="economy.html">Economy</a>
+    <a href="community.html">Community</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2025 <a href="index.html">AmiyiObinohia.online</a> — Amiyi Obinohia Village, Isuikwuato LGA, Abia State, Nigeria</p>
+</footer>
+
+</body>
+</html>

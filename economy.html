@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Economy & Livelihoods – Amiyi Obinohia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --gold: #C8993A; --deep-green: #1A3A2A; --forest: #2C5F3F; --cream: #FAF6EE; --dark: #111A14; --text: #2E2E2E; --accent: #8B1A1A; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); }
+    nav { position: fixed; top: 0; width: 100%; z-index: 999; background: rgba(26,58,42,0.97); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 68px; border-bottom: 2px solid var(--gold); }
+    .nav-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.25rem; font-weight: 700; letter-spacing: 1px; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #D8CDB8; text-decoration: none; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .page-hero { padding: 140px 5vw 80px; background: linear-gradient(135deg, #1A2A00 0%, #2A4A00 100%); position: relative; overflow: hidden; }
+    .page-hero::before { content: 'ECONOMY'; position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); font-family: 'Playfair Display', serif; font-size: 15vw; font-weight: 900; color: rgba(200,153,58,0.05); white-space: nowrap; user-select: none; }
+    .breadcrumb { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .breadcrumb a { color: rgba(200,153,58,0.6); text-decoration: none; }
+    h1.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+    h1.page-title span { color: var(--gold); }
+    .page-hero-sub { font-size: 1.1rem; color: #A8C898; line-height: 1.8; max-width: 600px; }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 80px 5vw; }
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; border-left: 3px solid var(--gold); padding-left: 10px; margin-bottom: 1rem; }
+    h2.s-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--deep-green); line-height: 1.2; margin-bottom: 1.2rem; }
+    .prose p { font-size: 1rem; line-height: 1.95; color: #444; margin-bottom: 1.4rem; }
+    .prose strong { color: var(--dark); }
+    .divider { border: none; border-top: 2px solid rgba(200,153,58,0.2); margin: 4rem 0; }
+
+    /* CROPS GRID */
+    .crops-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin: 2.5rem 0; }
+    .crop-card { background: var(--deep-green); padding: 2rem 1.2rem; text-align: center; position: relative; overflow: hidden; }
+    .crop-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+    .crop-card:hover::before { transform: scaleX(1); }
+    .crop-icon { font-size: 2rem; display: block; margin-bottom: 0.8rem; }
+    .crop-name { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1rem; margin-bottom: 0.3rem; }
+    .crop-type { font-size: 0.75rem; color: #7A9A7A; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* CHALLENGES */
+    .challenge-list { list-style: none; margin: 2rem 0; }
+    .challenge-list li { display: grid; grid-template-columns: 50px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(200,153,58,0.15); align-items: start; }
+    .challenge-list li:last-child { border-bottom: none; }
+    .c-icon { font-size: 1.6rem; text-align: center; padding-top: 0.2rem; }
+    .c-body h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--dark); margin-bottom: 0.4rem; }
+    .c-body p { font-size: 0.9rem; color: #666; line-height: 1.7; }
+
+    /* RESOURCES BOX */
+    .resources-box { background: rgba(200,153,58,0.07); border-left: 4px solid var(--gold); padding: 2.5rem; margin: 2.5rem 0; }
+    .resources-box h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--deep-green); margin-bottom: 1rem; }
+    .res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .res-item { padding: 1.2rem; background: #fff; border-top: 3px solid var(--gold); }
+    .res-item strong { display: block; color: var(--deep-green); font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .res-item p { font-size: 0.82rem; color: #777; }
+
+    /* ROAD PROJECT HIGHLIGHT */
+    .road-highlight { background: var(--accent); padding: 3rem; margin: 3rem 0; color: #fff; }
+    .road-highlight h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1rem; }
+    .road-highlight p { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.82); }
+    .road-highlight .communities { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+    .community-tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 0.4rem 1rem; font-size: 0.82rem; }
+
+    footer { background: var(--dark); color: #6B806B; padding: 3rem 5vw; text-align: center; font-size: 0.82rem; margin-top: 4rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-nav a { color: #6B806B; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Amiyi Obinohia</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="culture.html">Culture</a></li>
+    <li><a href="religion.html">Religion</a></li>
+    <li><a href="economy.html" class="active">Economy</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div style="max-width:800px;">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Economy & Livelihoods</div>
+    <h1 class="page-title">Economy &<br><span>Livelihoods</span></h1>
+    <p class="page-hero-sub">The agrarian soul of Amiyi Obinohia — its crops, markets, natural resources, environmental challenges, and the road to development.</p>
+  </div>
+</div>
+
+<main class="prose">
+
+  <span class="section-tag">Agriculture</span>
+  <h2 class="s-title">The Farming Heartbeat</h2>
+
+  <p>Amiyi Obinohia is fundamentally an <strong>agricultural community</strong>. The land — its hills, forest belts, and river-adjacent lowlands — has been the source of sustenance and wealth for generations. Like all of Isuikwuato LGA, the people of Amiyi Obinohia practice both subsistence farming for household consumption and cash crop production for market income.</p>
+
+  <p>The <strong>major cash crops</strong> are palm oil and cassava — both of which are central to the southeastern Nigerian food economy. Palm oil is processed locally from oil palms and sold in the Eke market and to traders from outside the community. Cassava is processed into garri (a staple food), fufu, and other products. These form the backbone of household income for the majority of farming families.</p>
+
+  <div class="crops-grid">
+    <div class="crop-card"><span class="crop-icon">🌴</span><div class="crop-name">Palm Oil</div><div class="crop-type">Primary Cash Crop</div></div>
+    <div class="crop-card"><span class="crop-icon">🌿</span><div class="crop-name">Cassava</div><div class="crop-type">Primary Cash Crop</div></div>
+    <div class="crop-card"><span class="crop-icon">🍠</span><div class="crop-name">Yam</div><div class="crop-type">Staple & Trade</div></div>
+    <div class="crop-card"><span class="crop-icon">🥜</span><div class="crop-name">Cashew</div><div class="crop-type">Cash Crop</div></div>
+    <div class="crop-card"><span class="crop-icon">🌽</span><div class="crop-name">Maize</div><div class="crop-type">Food Crop</div></div>
+    <div class="crop-card"><span class="crop-icon">🥬</span><div class="crop-name">Vegetables</div><div class="crop-type">Ugu, Okra, Oha</div></div>
+    <div class="crop-card"><span class="crop-icon">🫘</span><div class="crop-name">Beans</div><div class="crop-type">Food & Trade</div></div>
+    <div class="crop-card"><span class="crop-icon">🍌</span><div class="crop-name">Fruits</div><div class="crop-type">Banana, Orange, Mango</div></div>
+  </div>
+
+  <p>Beyond the major crops, the farming calendar of Amiyi Obinohia includes a variety of yam types (<em>water yam, white yam, yellow yam, coiling yam, cocoa yam</em>), vegetables essential to Igbo cuisine (<em>ugu/fluted pumpkin, okra, oha, ahahara</em>), and fruits including bananas, oranges, pears, mangoes, cashews, and kola nuts. Kola nut remains culturally significant beyond its economic value — it is used in all traditional ceremonies, greetings, and prayers.</p>
+
+  <hr class="divider">
+
+  <span class="section-tag">Natural Resources</span>
+  <h2 class="s-title">Minerals & Natural Wealth</h2>
+
+  <div class="resources-box">
+    <h3>What Lies Beneath the Soil</h3>
+    <p>Isuikwuato LGA, within which Amiyi Obinohia sits, is endowed with significant mineral resources that represent a substantial but under-exploited development potential.</p>
+    <div class="res-grid">
+      <div class="res-item"><strong>Iron Ore</strong><p>Iron ore deposits exist within Isuikwuato, with significant concentrations at Ugwuele in the broader LGA territory.</p></div>
+      <div class="res-item"><strong>Kaolin</strong><p>Kaolin deposits are present in the LGA, with applications in ceramics, paper, paint, and pharmaceuticals manufacturing.</p></div>
+      <div class="res-item"><strong>Oil Pipelines</strong><p>Oil lines flow through Isuikwuato, and burst pipes have caused severe damage to local ecology and farmland. This represents both a risk and an untapped economic relationship.</p></div>
+      <div class="res-item"><strong>Timber & Forest</strong><p>The forest belt between Amiyi Obinohia and Ogii represents a timber resource, though one that requires sustainable management to avoid further deforestation.</p></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <span class="section-tag">Infrastructure</span>
+  <h2 class="s-title">The Road to Development</h2>
+
+  <div class="road-highlight">
+    <h3>Proposed Abia State Road Project</h3>
+    <p>The Abia State Government has identified a critical road project that would pass through Amiyi Obinohia and several neighbouring communities. The explicit goal of this road is to open up these areas and enable farmers to transport their agricultural produce to urban markets more effectively — reducing post-harvest losses and increasing incomes for farming families.</p>
+    <div class="communities">
+      <span class="community-tag">Amiyi Obinohia</span>
+      <span class="community-tag">Umuebere</span>
+      <span class="community-tag">Umunnekwu</span>
+      <span class="community-tag">Amaba</span>
+    </div>
+  </div>
+
+  <p>Road infrastructure is the single most transformative development intervention possible for Amiyi Obinohia. Poor road connectivity currently limits the ability of farmers to get produce to market quickly, results in spoilage, reduces bargaining power, and restricts access to healthcare and education for community members — especially during the rainy season when unpaved roads become impassable.</p>
+
+  <hr class="divider">
+
+  <span class="section-tag">Challenges</span>
+  <h2 class="s-title">Economic Challenges</h2>
+
+  <ul class="challenge-list">
+    <li>
+      <div class="c-icon">🌧️</div>
+      <div class="c-body">
+        <h4>Soil Erosion</h4>
+        <p>The soil in Isuikwuato — and by extension Amiyi Obinohia — is loose and highly susceptible to erosion. This leaves dangerous erosion sites that destroy farmland. The community lacks government-backed drainage infrastructure to manage water flow and protect agricultural land. As rainfall increases during the wet season, the problem worsens each year.</p>
+      </div>
+    </li>
+    <li>
+      <div class="c-icon">💧</div>
+      <div class="c-body">
+        <h4>Water Scarcity</h4>
+        <p>Despite regular rainfall, the hilly highland terrain makes water a scarce and hard-to-access resource in Isuikwuato. Adequate water infrastructure — boreholes, water tables, community water schemes — is urgently needed in Amiyi Obinohia to support both domestic consumption and agricultural irrigation.</p>
+      </div>
+    </li>
+    <li>
+      <div class="c-icon">🛤️</div>
+      <div class="c-body">
+        <h4>Poor Road Access</h4>
+        <p>Inadequate roads between Amiyi Obinohia and nearby market towns limit the commercialization of agricultural output. Farmers struggle to move produce, traders cannot reach the community efficiently, and the economic potential of the land remains unrealized. The proposed Abia State road project is a critical but still unfulfilled promise.</p>
+      </div>
+    </li>
+    <li>
+      <div class="c-icon">🔥</div>
+      <div class="c-body">
+        <h4>Oil Pipeline Damage</h4>
+        <p>Oil lines that run through Isuikwuato have suffered burst pipe incidents that severely damage agricultural land and water sources. The ecological and economic impact of oil spills on farming communities like Amiyi Obinohia is devastating and long-lasting.</p>
+      </div>
+    </li>
+    <li>
+      <div class="c-icon">🔫</div>
+      <div class="c-body">
+        <h4>Insecurity & Economic Disruption</h4>
+        <p>The escalating security crisis at the Ogii-Amiyi Obinohia boundary has severely disrupted economic activity. Movement to and from farms has reduced. Traders avoid the area. The Eke market has been shut down in protest. As community member Agbaeze Chinonso stated, "economic stability is being threatened by insecurity."</p>
+      </div>
+    </li>
+  </ul>
+
+  <hr class="divider">
+
+  <span class="section-tag">Livelihoods</span>
+  <h2 class="s-title">Beyond Farming: Other Economic Activities</h2>
+
+  <p>While agriculture dominates, the people of Amiyi Obinohia engage in a range of other livelihood activities. <strong>Trade</strong> is significant — particularly for women who are the dominant participants in the Eke market, selling processed food items, agricultural produce, and household goods. <strong>Woodwork and carpentry</strong> are noted economic activities in Isuikwuato that are practiced in the community.</p>
+
+  <p><strong>Remittances from the diaspora</strong> are also an important but informal economic pillar. Community members who have migrated to Aba, Umuahia, Port Harcourt, Lagos, Abuja, and abroad send money home that supports household consumption, school fees, and medical expenses. The strong diaspora turnout at community events — including funerals that draw people from across Nigeria and internationally — reflects the depth of these economic and emotional bonds.</p>
+
+  <p>The proximity of <strong>Abia State University, Uturu</strong> (a few kilometres from the Amiyi belt) creates some economic activity — supplying food, accommodation, and services to the university population — though the community has not yet fully leveraged this opportunity due to road and infrastructure constraints.</p>
+
+</main>
+
+<footer>
+  <div class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="history.html">History</a>
+    <a href="culture.html">Culture</a>
+    <a href="religion.html">Religion</a>
+    <a href="economy.html">Economy</a>
+    <a href="community.html">Community</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2025 <a href="index.html">AmiyiObinohia.online</a> — Amiyi Obinohia Village, Isuikwuato LGA, Abia State, Nigeria</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amiyi Obinohia – Heart of Isuikwuato</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C8993A;
+      --deep-green: #1A3A2A;
+      --forest: #2C5F3F;
+      --cream: #FAF6EE;
+      --dark: #111A14;
+      --text: #2E2E2E;
+      --accent: #8B1A1A;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      background: rgba(26,58,42,0.97);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: #D8CDB8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: 
+        linear-gradient(to bottom, rgba(10,28,18,0.82) 0%, rgba(26,58,42,0.6) 60%, rgba(10,20,12,0.92) 100%),
+        url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=80') center/cover no-repeat;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 5vw 60px;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8993A' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      color: var(--gold);
+      letter-spacing: 4px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: #C8D8C0;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.9s forwards;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.2s forwards;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 0.85rem 2.2rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid var(--gold);
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { background: transparent; color: var(--gold); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 0.85rem 2.2rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .scroll-indicator {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+      animation: bounce 2s ease infinite;
+    }
+    .scroll-indicator::after {
+      content: '';
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* QUICK STATS */
+    .stats-bar {
+      background: var(--deep-green);
+      padding: 2rem 5vw;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0;
+      border-bottom: 2px solid var(--gold);
+    }
+    .stat-item {
+      text-align: center;
+      padding: 1.2rem;
+      border-right: 1px solid rgba(200,153,58,0.2);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      font-weight: 900;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: #9AB09A;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5vw; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      border-left: 3px solid var(--gold);
+      padding-left: 10px;
+      margin-bottom: 1rem;
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--deep-green);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    h2.section-title.light { color: #fff; }
+    .section-lead {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.9;
+      max-width: 700px;
+    }
+    .section-lead.light { color: #B8D0B8; }
+
+    /* ABOUT INTRO */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      display: block;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: -24px; right: -24px;
+      width: 60%;
+      aspect-ratio: 1;
+      border: 4px solid var(--gold);
+      z-index: -1;
+    }
+    .about-badge {
+      position: absolute;
+      top: -20px; left: -20px;
+      background: var(--deep-green);
+      border: 2px solid var(--gold);
+      padding: 1.2rem;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .about-text { }
+    .about-quote {
+      border-left: 4px solid var(--gold);
+      padding: 1rem 0 1rem 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--forest);
+      margin: 2rem 0;
+      line-height: 1.6;
+    }
+    .about-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2.5rem; }
+    .page-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: #fff;
+      border: 1px solid #E8E0D0;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .page-link:hover {
+      border-color: var(--gold);
+      background: var(--cream);
+      transform: translateX(6px);
+    }
+    .page-link-icon {
+      width: 44px; height: 44px;
+      background: var(--deep-green);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+    .page-link-text strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+    .page-link-text span {
+      font-size: 0.78rem;
+      color: #888;
+    }
+    .page-link-arrow { margin-left: auto; color: var(--gold); font-size: 1.1rem; }
+
+    /* FEATURES GRID */
+    .features {
+      background: var(--deep-green);
+    }
+    .features-inner { max-width: 1200px; margin: 0 auto; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      margin-top: 4rem;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.04);
+      padding: 2.5rem 2rem;
+      border-top: 3px solid transparent;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .feature-card:hover {
+      background: rgba(200,153,58,0.08);
+      border-top-color: var(--gold);
+    }
+    .feature-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
+    .feature-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+    .feature-desc { font-size: 0.9rem; color: #8AA08A; line-height: 1.7; }
+    .feature-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* HIGHLIGHT BAND */
+    .highlight-band {
+      background: var(--accent);
+      padding: 4rem 5vw;
+      text-align: center;
+    }
+    .highlight-band p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: #fff;
+      line-height: 1.5;
+      max-width: 900px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+    .highlight-band p::before { content: '"'; }
+    .highlight-band p::after { content: '"'; }
+
+    /* COMMUNITY NEWS PREVIEW */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      max-width: 1200px; margin-left: auto; margin-right: auto;
+    }
+    .news-card {
+      background: #fff;
+      border-bottom: 3px solid transparent;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+      overflow: hidden;
+    }
+    .news-card:hover { border-bottom-color: var(--gold); transform: translateY(-4px); }
+    .news-card-top {
+      height: 5px;
+      background: var(--gold);
+    }
+    .news-card-body { padding: 2rem; }
+    .news-tag {
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .news-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+      color: var(--dark);
+    }
+    .news-card p { font-size: 0.88rem; color: #666; line-height: 1.7; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #6B806B;
+      padding: 4rem 5vw 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(200,153,58,0.15);
+      max-width: 1200px; margin: 0 auto;
+    }
+    .footer-brand { }
+    .footer-brand .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.8; }
+    .footer-col h4 {
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: #6B806B;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      font-size: 0.8rem;
+      color: #3A4E3A;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .footer-bottom span { color: var(--gold); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image-wrap { max-width: 400px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { gap: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Amiyi Obinohia</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="culture.html">Culture</a></li>
+    <li><a href="religion.html">Religion</a></li>
+    <li><a href="economy.html">Economy</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Oguduasa Clan · Isuikwuato · Abia State · Nigeria</div>
+  <h1>Amiyi<br><span>Obinohia</span></h1>
+  <p class="hero-sub">Where the forest meets the heart of Igbo civilization — a proud village of heritage, faith, community, and enduring resilience in the highlands of Isuikwuato.</p>
+  <div class="hero-cta">
+    <a href="history.html" class="btn-primary">Explore Our History</a>
+    <a href="community.html" class="btn-outline">Meet the Community</a>
+  </div>
+  <div class="scroll-indicator">Scroll</div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">1991</span>
+    <span class="stat-label">Part of Abia State</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Founding Clans of Isuikwuato</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">28°C</span>
+    <span class="stat-label">Average Temperature</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">1914</span>
+    <span class="stat-label">Year of Christianity's Arrival</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">Oguduasa</span>
+    <span class="stat-label">Our Founding Clan</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <div class="about-grid">
+    <div class="about-image-wrap">
+      <img class="about-img" src="https://images.unsplash.com/photo-1504376830547-506dedfe681a?w=800&q=80" alt="Village landscape">
+      <div class="about-img-accent"></div>
+      <div class="about-badge">Heart of<br>the Forest</div>
+    </div>
+    <div class="about-text">
+      <span class="section-tag">Who We Are</span>
+      <h2 class="section-title">A Village Rooted in<br>Ancient Igbo Tradition</h2>
+      <p class="section-lead">Amiyi Obinohia is a proud village in Isuikwuato Local Government Area of Abia State, Nigeria. Situated within the Oguduasa clan — one of the three founding lineages of Isuikwuato — our community is an enduring testament to Igbo resilience, kinship, and cultural depth.</p>
+      <blockquote class="about-quote">A place where the land speaks, the ancestors walk, and the community breathes as one.</blockquote>
+      <p style="color:#555;line-height:1.9;font-size:0.95rem;">Adjacent to Eluoma — the largest town in Isuikwuato — and with the Ogii boundary of Imo State to the south, Amiyi Obinohia occupies a geography that is both beautiful and strategic. Its hills, forest belts, and rich farmlands have sustained its people through generations.</p>
+      <div class="about-links">
+        <a href="history.html" class="page-link">
+          <div class="page-link-icon">📜</div>
+          <div class="page-link-text"><strong>History & Origins</strong><span>Trace our lineage from the Isu founding fathers</span></div>
+          <span class="page-link-arrow">→</span>
+        </a>
+        <a href="culture.html" class="page-link">
+          <div class="page-link-icon">🎭</div>
+          <div class="page-link-text"><strong>Culture & Traditions</strong><span>Festivals, age grades, and our living heritage</span></div>
+          <span class="page-link-arrow">→</span>
+        </a>
+        <a href="religion.html" class="page-link">
+          <div class="page-link-icon">⛪</div>
+          <div class="page-link-text"><strong>Faith & Religion</strong><span>St. Silas Methodist Church and spiritual life</span></div>
+          <span class="page-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <span class="section-tag">Explore</span>
+    <h2 class="section-title light">Everything About<br>Our Village</h2>
+    <p class="section-lead light">Navigate through the different dimensions of Amiyi Obinohia — from our ancestral roots to the challenges of today.</p>
+    <div class="features-grid">
+      <a href="history.html" class="feature-card">
+        <span class="feature-icon">📜</span>
+        <div class="feature-title">History & Origins</div>
+        <p class="feature-desc">Discover the founding story of the Oguduasa clan, the colonial era, and how Amiyi Obinohia became the community it is today.</p>
+        <span class="feature-link">Read History →</span>
+      </a>
+      <a href="culture.html" class="feature-card">
+        <span class="feature-icon">🎭</span>
+        <div class="feature-title">Culture & Traditions</div>
+        <p class="feature-desc">Iriji festivals, age grade associations, burial customs, the Eke market, masquerades, and the living fabric of Igbo village life.</p>
+        <span class="feature-link">Explore Culture →</span>
+      </a>
+      <a href="religion.html" class="feature-card">
+        <span class="feature-icon">⛪</span>
+        <div class="feature-title">Faith & Religion</div>
+        <p class="feature-desc">St. Silas Methodist Church, the Anglican communion, and the story of how Christianity transformed community life since 1914.</p>
+        <span class="feature-link">Read More →</span>
+      </a>
+      <a href="economy.html" class="feature-card">
+        <span class="feature-icon">🌾</span>
+        <div class="feature-title">Economy & Livelihoods</div>
+        <p class="feature-desc">Palm oil, cassava, yam, cashew, and the Eke market. The agrarian soul of Amiyi Obinohia and the challenges of infrastructure.</p>
+        <span class="feature-link">View Economy →</span>
+      </a>
+      <a href="community.html" class="feature-card">
+        <span class="feature-icon">👥</span>
+        <div class="feature-title">Community & People</div>
+        <p class="feature-desc">Notable families, the Otu Obi Age Grade, women's resilience, diaspora connections, and governance structures.</p>
+        <span class="feature-link">Meet the People →</span>
+      </a>
+      <a href="contact.html" class="feature-card">
+        <span class="feature-icon">📬</span>
+        <div class="feature-title">Connect With Us</div>
+        <p class="feature-desc">Are you from Amiyi Obinohia or do you have information to contribute? Reach out and be part of preserving our story.</p>
+        <span class="feature-link">Get in Touch →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<div class="highlight-band">
+  <p>Igbo ama eze — The Igbo have no king but the community. Every voice matters, every elder is sacred, every child is the future of Amiyi Obinohia.</p>
+</div>
+
+<!-- NEWS PREVIEW -->
+<section style="background:#fff;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <span class="section-tag">Community Updates</span>
+    <h2 class="section-title">Recent Events & Stories</h2>
+    <div class="news-grid" style="margin-top:2.5rem;">
+      <div class="news-card">
+        <div class="news-card-top"></div>
+        <div class="news-card-body">
+          <div class="news-tag">Security</div>
+          <h3>Community Women Protest Killings by Suspected Gunmen</h3>
+          <p>Women from Amiyi Obinohia shut down the Eke market and gathered at Ama Ukwu Oho Square to protest the killing of two community sons, demanding justice and better security at the Ogii-Imo State boundary.</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-top"></div>
+        <div class="news-card-body">
+          <div class="news-tag">Faith</div>
+          <h3>St. Silas Methodist Church Hosts Grand Burial Ceremony</h3>
+          <p>The October 2024 three-day burial ceremony for Mrs. Sussana Alakweonye drew mourners from across Nigeria and the diaspora, filling the church to capacity in a powerful display of community bonds.</p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-top"></div>
+        <div class="news-card-body">
+          <div class="news-tag">Development</div>
+          <h3>Abia State Road Project to Open Up Amiyi Obinohia Corridor</h3>
+          <p>A proposed Abia State Government road project identified Amiyi Obinohia and neighbouring communities including Umuebere, Umunnekwu, and Amaba for improved road access to facilitate agricultural transport.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Amiyi Obinohia</span>
+      <p>The official digital home of Amiyi Obinohia village, Isuikwuato Local Government Area, Abia State, Nigeria. Preserving our heritage. Connecting our people. Building our future.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="culture.html">Culture</a></li>
+        <li><a href="religion.html">Religion</a></li>
+        <li><a href="economy.html">Economy</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Location</h4>
+      <ul>
+        <li><a href="#">Oguduasa Clan</a></li>
+        <li><a href="#">Isuikwuato LGA</a></li>
+        <li><a href="#">Abia State</a></li>
+        <li><a href="#">Abia North District</a></li>
+        <li><a href="#">Southeast Nigeria</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Landmarks</h4>
+      <ul>
+        <li><a href="#">St. Silas Methodist Church</a></li>
+        <li><a href="#">Ama Ukwu Oho Square</a></li>
+        <li><a href="#">Ogbata / Ama Olekwere Square</a></li>
+        <li><a href="#">Eke Market</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>AmiyiObinohia.online</span> — All rights reserved · Amiyi Obinohia Village, Isuikwuato LGA, Abia State, Nigeria</p>
+  </div>
+</footer>
+
+</body>
+</html>

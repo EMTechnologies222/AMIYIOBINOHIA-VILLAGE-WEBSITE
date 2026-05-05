@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Culture & Traditions – Amiyi Obinohia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --gold: #C8993A; --deep-green: #1A3A2A; --forest: #2C5F3F; --cream: #FAF6EE; --dark: #111A14; --text: #2E2E2E; --accent: #8B1A1A; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); }
+
+    nav { position: fixed; top: 0; width: 100%; z-index: 999; background: rgba(26,58,42,0.97); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 68px; border-bottom: 2px solid var(--gold); }
+    .nav-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.25rem; font-weight: 700; letter-spacing: 1px; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: #D8CDB8; text-decoration: none; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .page-hero { padding: 140px 5vw 80px; background: linear-gradient(135deg, #3A1A00 0%, #7A3D00 100%); position: relative; overflow: hidden; }
+    .page-hero::before { content: 'CULTURE'; position: absolute; right: -2vw; top: 50%; transform: translateY(-50%); font-family: 'Playfair Display', serif; font-size: 18vw; font-weight: 900; color: rgba(200,153,58,0.06); white-space: nowrap; user-select: none; }
+    .breadcrumb { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .breadcrumb a { color: rgba(200,153,58,0.6); text-decoration: none; }
+    h1.page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #fff; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+    h1.page-title span { color: var(--gold); }
+    .page-hero-sub { font-size: 1.1rem; color: #D4B896; line-height: 1.8; max-width: 600px; }
+
+    /* CULTURE CARDS INTRO */
+    .culture-intro {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0;
+      background: var(--dark);
+    }
+    .ci-card {
+      padding: 3.5rem 2.5rem;
+      border-right: 1px solid rgba(200,153,58,0.1);
+      border-bottom: 1px solid rgba(200,153,58,0.1);
+      text-align: center;
+    }
+    .ci-card:nth-child(odd) { background: rgba(255,255,255,0.02); }
+    .ci-card .icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+    .ci-card h3 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 0.8rem; }
+    .ci-card p { font-size: 0.88rem; color: #7A9A7A; line-height: 1.7; }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 80px 5vw; }
+
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 700; border-left: 3px solid var(--gold); padding-left: 10px; margin-bottom: 1rem; }
+    h2.s-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--deep-green); line-height: 1.2; margin-bottom: 1.2rem; }
+    .prose p { font-size: 1rem; line-height: 1.95; color: #444; margin-bottom: 1.4rem; }
+    .prose strong { color: var(--dark); }
+    .prose blockquote { border-left: 4px solid var(--gold); padding: 1.2rem 1.5rem; background: rgba(200,153,58,0.06); margin: 2rem 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--forest); line-height: 1.6; }
+
+    .divider { border: none; border-top: 2px solid rgba(200,153,58,0.2); margin: 5rem 0; }
+
+    /* TWO-COL TEXT SECTIONS */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-bottom: 5rem; }
+    .two-col.rev { direction: rtl; }
+    .two-col.rev > * { direction: ltr; }
+
+    /* FESTIVAL HIGHLIGHT */
+    .festival-box {
+      background: var(--deep-green);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      margin: 4rem 0;
+    }
+    .festival-box::before {
+      content: '🌾';
+      position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
+      font-size: 8rem; opacity: 0.08;
+    }
+    .festival-box h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
+    .festival-box p { color: #9AB09A; font-size: 0.97rem; line-height: 1.8; max-width: 700px; }
+
+    /* EKE MARKET */
+    .market-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(200,153,58,0.2); margin: 2rem 0; }
+    .market-day { background: var(--cream); padding: 1.8rem 1rem; text-align: center; }
+    .market-day.active { background: var(--deep-green); }
+    .market-day .day-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--deep-green); font-weight: 700; }
+    .market-day.active .day-name { color: var(--gold); }
+    .market-day .day-desc { font-size: 0.78rem; color: #888; margin-top: 0.4rem; }
+    .market-day.active .day-desc { color: #7A9A7A; }
+
+    /* BURIAL CUSTOMS */
+    .burial-steps { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+    .burial-step { display: grid; grid-template-columns: 60px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(200,153,58,0.15); }
+    .burial-step:last-child { border-bottom: none; }
+    .step-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: rgba(200,153,58,0.3); font-weight: 900; text-align: center; }
+    .step-body h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); margin-bottom: 0.4rem; }
+    .step-body p { font-size: 0.88rem; color: #666; line-height: 1.7; }
+
+    /* AGE GRADE */
+    .age-grade-card { background: rgba(200,153,58,0.06); border: 1px solid rgba(200,153,58,0.25); padding: 2.5rem; margin: 2rem 0; }
+    .age-grade-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--deep-green); margin-bottom: 1rem; }
+    .age-grade-card p { font-size: 0.97rem; color: #555; line-height: 1.85; }
+    .age-grade-roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+    .role-pill { background: var(--deep-green); color: #9AB09A; padding: 0.8rem 1rem; font-size: 0.82rem; text-align: center; }
+    .role-pill strong { display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+    footer { background: var(--dark); color: #6B806B; padding: 3rem 5vw; text-align: center; font-size: 0.82rem; margin-top: 4rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .footer-nav a { color: #6B806B; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } .market-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .nav-links { display: none; } .market-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Amiyi Obinohia</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="history.html">History</a></li>
+    <li><a href="culture.html" class="active">Culture</a></li>
+    <li><a href="religion.html">Religion</a></li>
+    <li><a href="economy.html">Economy</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div style="max-width:800px;">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Culture & Traditions</div>
+    <h1 class="page-title">Culture &<br><span>Traditions</span></h1>
+    <p class="page-hero-sub">The living heritage of Amiyi Obinohia — from age-old festivals and sacred customs to the age grades, markets, and ceremonies that bind this community together.</p>
+  </div>
+</div>
+
+<!-- CULTURE QUICK CARDS -->
+<div class="culture-intro">
+  <div class="ci-card"><span class="icon">🎭</span><h3>Festivals</h3><p>The Iriji (New Yam) Festival and Ajonkwu festival mark the community's sacred calendar, celebrating the harvest and ancestral connections.</p></div>
+  <div class="ci-card"><span class="icon">👥</span><h3>Age Grades</h3><p>The Otu Obi Age Grade and other age sets form the backbone of community organization, welfare, and social identity.</p></div>
+  <div class="ci-card"><span class="icon">🪔</span><h3>Burial Rites</h3><p>Multi-day burial ceremonies honour the dead with elaborate ritual, community solidarity, and the return of women to their maiden homes.</p></div>
+  <div class="ci-card"><span class="icon">🛒</span><h3>Eke Market</h3><p>The Eke market — operating on the traditional four-day Igbo cycle — is the community's commercial and social heartbeat.</p></div>
+</div>
+
+<main class="prose">
+
+  <!-- FESTIVALS -->
+  <span class="section-tag">Celebrations</span>
+  <h2 class="s-title">The Festivals of Amiyi Obinohia</h2>
+
+  <div class="festival-box">
+    <h3>Iriji — The New Yam Festival</h3>
+    <p>The <strong>Iriji Festival</strong> (also spelled Iri Ji or New Yam Festival) is among the most significant annual cultural events in Amiyi Obinohia and all of Isuikwuato. Marking the beginning of the yam harvest season, it is a day of communal thanksgiving, ancestral honour, and celebration of the earth's abundance. Traditional music, masquerades, dances, and folklore performances fill the community. Elders make libations and offer the first yam to the ancestors before the community shares in the harvest feast. The late Dr. Onyike — a community icon of Isuikwuato — was celebrated for revitalizing the Iriji tradition in the broader LGA, ensuring it was passed down to younger generations.</p>
+  </div>
+
+  <p>Beyond Iriji, the broader Isuikwuato cultural calendar includes the <strong>Ajonkwu Festival</strong>, which is one of the popular festivals of the LGA. These festivals feature traditional music, dances, masquerades (mmanwu), and the storytelling traditions that form the living repository of community knowledge.</p>
+
+  <blockquote>These cultural events feature traditional music, dances, and folklore, preserving the community's heritage and passing it down through generations.</blockquote>
+
+  <hr class="divider">
+
+  <!-- AGE GRADES -->
+  <span class="section-tag">Social Structure</span>
+  <h2 class="s-title">Age Grade Associations</h2>
+
+  <p>Age grades are one of the most vital institutions of Igbo communal life, and in Amiyi Obinohia they serve as the primary engine of community organization, solidarity, and collective action. Males of the same approximate age group are bound together in a lifelong association that carries both social prestige and civic responsibility.</p>
+
+  <div class="age-grade-card">
+    <h3>Otu Obi Age Grade — Amiyi Obinohia</h3>
+    <p>The <strong>Otu Obi Age Grade</strong> of Amiyi Obinohia is the most documented and active of the community's age grade associations. Led by their chairman, <strong>Chukwuma Ogbulokoro</strong>, the Otu Obi have demonstrated a consistent pattern of rallying around community members during times of joy and grief alike. During the October 2024 burial ceremony for Mrs. Sussana Alakweonye, the Otu Obi were described as having "added colour to the wake" — staying through the night, supporting the family, and ensuring the community's presence was felt in full.</p>
+    <div class="age-grade-roles">
+      <div class="role-pill"><strong>Community Sanitation</strong>Periodic village clean-up and maintenance</div>
+      <div class="role-pill"><strong>Social Welfare</strong>Supporting bereaved and needy members</div>
+      <div class="role-pill"><strong>Peacekeeping</strong>Mediating disputes and maintaining order</div>
+      <div class="role-pill"><strong>Celebrations</strong>Organizing festivals and community events</div>
+      <div class="role-pill"><strong>Development</strong>Championing communal infrastructure projects</div>
+    </div>
+  </div>
+
+  <p>The women of Amiyi Obinohia also operate their own governance and association structures. As is traditional in Igbo communities, "adult males took the most important decisions while women always had their own government." The women's voice in Amiyi Obinohia has proven powerful — as demonstrated by the organized, community-wide protest they mounted in response to the killing of community sons, shutting down the Eke market and marching to the Ama Ukwu Oho Square in solidarity.</p>
+
+  <hr class="divider">
+
+  <!-- EKE MARKET -->
+  <span class="section-tag">Commerce & Social Life</span>
+  <h2 class="s-title">The Eke Market</h2>
+
+  <p>The <strong>Eke market</strong> in Amiyi Obinohia is the commercial and social heart of the community. It operates on the traditional Igbo four-day market cycle, with each day named after one of the four Igbo market days.</p>
+
+  <div class="market-grid">
+    <div class="market-day active">
+      <div class="day-name">Eke</div>
+      <div class="day-desc">Amiyi Obinohia's main market day — the social and commercial anchor of the week</div>
+    </div>
+    <div class="market-day">
+      <div class="day-name">Orie</div>
+      <div class="day-desc">Second day of the Igbo market cycle</div>
+    </div>
+    <div class="market-day">
+      <div class="day-name">Afor</div>
+      <div class="day-desc">Third day in the traditional rotation</div>
+    </div>
+    <div class="market-day">
+      <div class="day-name">Nkwo</div>
+      <div class="day-desc">Fourth day completes the cycle</div>
+    </div>
+  </div>
+
+  <p>The Eke market draws traders and visitors from Amiyi Obinohia and surrounding communities — including Eluoma, Amiyi Uhu, Amaokwe Amiyi, and communities from across the Ogii border. Women are the predominant traders, dealing primarily in agricultural produce, palm oil, food items, cloth, and household goods. The market functions as far more than a commercial space — it is a social forum where community news is exchanged, relationships are built, and the pulse of communal life is felt.</p>
+
+  <p>The centrality of the Eke market to community life was underscored during the security crisis, when women chose to shut it down as their most potent act of protest — a demonstration that stopping the market is stopping the heart of the village.</p>
+
+  <hr class="divider">
+
+  <!-- BURIAL CUSTOMS -->
+  <span class="section-tag">Sacred Customs</span>
+  <h2 class="s-title">Burial Rites & Funeral Traditions</h2>
+
+  <p>The burial culture of Amiyi Obinohia is among the most elaborate and community-defining of all Igbo customs. The community places enormous importance on honouring the dead with proper ceremony, communal participation, and cultural dignity. Funerals can last three or more days and involve the entire village and diaspora.</p>
+
+  <div class="burial-steps">
+    <div class="burial-step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h4>Return to the Maiden Home</h4>
+        <p>A deeply significant custom: when a woman passes away, her remains are first brought to her <strong>maiden home</strong> in Amiyi Obinohia to be received by her birth family before proceeding to her marital home. This affirms the enduring bond between a woman and the family she was born into, even across a lifetime of marriage. In one documented case, the large motorcade brought the deceased to the family of Anusi Ojiabor at Amiyi Obinohia before proceeding to Amaokwe Amiyi.</p>
+      </div>
+    </div>
+    <div class="burial-step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h4>Service of Songs</h4>
+        <p>On the eve of the funeral, a formal <strong>Service of Songs</strong> is conducted, usually led by the deceased's church — in Amiyi Obinohia, this is St. Silas Methodist Church. The service features hymns, tributes, and communal mourning in song. It was documented as being "well-attended" at the October 2024 funeral.</p>
+      </div>
+    </div>
+    <div class="burial-step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h4>All-Night Wake</h4>
+        <p>Immediately following the Service of Songs, a lively <strong>all-night wake</strong> takes place, hosted by the age grade and family. The Otu Obi Age Grade plays a central role. Renowned compere Onwuchekwa Ohia is known for coordinating the wake in Amiyi Obinohia, keeping the gathering energized through the night with food, drink, music, and merriment — even "heavy rainfall" could not disrupt it in October 2024.</p>
+      </div>
+    </div>
+    <div class="burial-step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <h4>Church Funeral Service</h4>
+        <p>The following day, remains are taken to <strong>St. Silas Methodist Church</strong> for the formal funeral service. The presiding minister delivers a sermon, tributes are read, condolences offered, and the community gathers — from across Nigeria and the diaspora. Funerals in Amiyi Obinohia regularly fill the church to capacity.</p>
+      </div>
+    </div>
+    <div class="burial-step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <h4>Interment at the Compound</h4>
+        <p>In Igbo tradition, the deceased is buried at their family compound — not in a separate cemetery. The body is laid to rest in the earth of their ancestral home, maintaining the physical bond between the living family and the ancestors who dwell in the land beneath them.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LANGUAGE & IDENTITY -->
+  <span class="section-tag">Language & Identity</span>
+  <h2 class="s-title">Language, Dialect, and Igbo Identity</h2>
+
+  <p>The people of Amiyi Obinohia speak <strong>Igbo</strong>, as do all communities in Isuikwuato. However, within the broader Igbo-speaking world, Isuikwuato communities maintain their own distinct dialect patterns. Neighbouring Eluoma, for instance, is known for having a dialect distinct enough that "one can easily pick out an Eluoma person from his tongue" — and this dialectal richness extends to Amiyi Obinohia and the Oguduasa clan's communities.</p>
+
+  <p>With the arrival of British colonial rule and Western education (formalized from 1914), <strong>English became the second language</strong> of the community and the medium of formal education. Today, community members are typically bilingual — speaking Igbo at home and in the market, and English in formal, educational, and professional settings.</p>
+
+  <p>The community's Igbo identity is expressed not just in language but in proverbs, naming conventions, kinship terminology, food culture (ofe ora, ofe owerri, ji mmiri oji, oha soup, ugba), and the entire rhythm of daily life. The Igbo value system of <em>Odinani</em> — the traditional moral code — continues to inform community ethics even within a Christian framework.</p>
+
+  <blockquote>Igbo ama eze — the Igbo have no king. Communal issues were settled by elders delegated from the different villages, who decided on the basis of majority votes.</blockquote>
+
+  <!-- COMMUNITY SQUARES -->
+  <hr class="divider">
+  <span class="section-tag">Public Spaces</span>
+  <h2 class="s-title">Community Squares & Gathering Places</h2>
+
+  <p>Amiyi Obinohia has two documented community squares that serve as the physical centres of public life:</p>
+
+  <div class="two-col">
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--deep-green);margin-bottom:1rem;">Ogbata / Ama Olekwere Square</h3>
+      <p>Listed as an official landmark of Isuikwuato LGA in administrative records, the Ogbata / Ama Olekwere Square is a traditional gathering space within Amiyi Obinohia. It functions as the ancestral meeting ground — the equivalent of the village square that exists in every Igbo community, where communal decisions are historically made, disputes settled, and community announcements proclaimed.</p>
+    </div>
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--deep-green);margin-bottom:1rem;">Ama Ukwu Oho Square</h3>
+      <p>The Ama Ukwu Oho Square is where the community assembled during the security crisis protest. Women gathered here before marching through the Eke market, singing songs of sorrow and calling for justice. This square represents the democratic heart of the community — a space where the people raise their collective voice when governance fails them.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="history.html">History</a>
+    <a href="culture.html">Culture</a>
+    <a href="religion.html">Religion</a>
+    <a href="economy.html">Economy</a>
+    <a href="community.html">Community</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2025 <a href="index.html">AmiyiObinohia.online</a> — Amiyi Obinohia Village, Isuikwuato LGA, Abia State, Nigeria</p>
+</footer>
+
+</body>
+</html>
