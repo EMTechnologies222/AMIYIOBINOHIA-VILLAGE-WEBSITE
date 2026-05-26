@@ -1,6 +1,6 @@
-# Amiyi Obinohia Village Website
+# Amiyi Obilohia Village Website
 
-Official website for Amiyi Obinohia village, Isuikwuato LGA, Abia State, Nigeria.
+Official website for Amiyi Obilohia village, Isuikwuato LGA, Abia State, Nigeria.
 
 ## Pages
 
@@ -14,7 +14,7 @@ Official website for Amiyi Obinohia village, Isuikwuato LGA, Abia State, Nigeria
 
 ## Hosting
 
-Live at: [AmiyiObinohia.online](https://AmiyiObinohia.online)
+Live at: [AmiyiObilohia.online](https://AmiyiObilohia.online)
 
 ## Built by
 
