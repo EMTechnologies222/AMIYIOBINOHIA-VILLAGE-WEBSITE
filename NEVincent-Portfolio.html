@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>NEVincent | Nwachukwu Emmanuel Ihechukwu Vincent — Full-Stack Developer & Founder, Abakaliki Nigeria</title>
+<meta name="description" content="NEVincent Technologies — Full-stack developer, fintech engineer, and creative technologist based in Abakaliki, Ebonyi State, Nigeria. Building digital products that matter."/>
+<meta name="keywords" content="NEVincent, Nwachukwu Emmanuel, full stack developer Nigeria, fintech developer Abakaliki, web developer Ebonyi, NEVincent Technologies, React developer Nigeria"/>
+<meta name="author" content="Nwachukwu Emmanuel Ihechukwu Vincent"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="NEVincent — Full-Stack Developer & Founder"/>
+<meta property="og:description" content="Fintech engineer, creative technologist, and founder of NEVincent Technologies. Based in Abakaliki, Nigeria."/>
+<meta property="og:locale" content="en_NG"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@NEVincent"/>
+<meta name="twitter:title" content="NEVincent — Full-Stack Developer & Founder"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Nwachukwu Emmanuel Ihechukwu Vincent","alternateName":"NEVincent","url":"https://nwachukwu-emmanuel.netlify.app/","email":"nwachukwuihechukwu14@gmail.com","telephone":"+2347077103421","jobTitle":"Full-Stack Developer & Founder","worksFor":{"@type":"Organization","name":"NEVincent Technologies"},"address":{"@type":"PostalAddress","addressLocality":"Abakaliki","addressRegion":"Ebonyi State","addressCountry":"NG"},"sameAs":["https://linkedin.com/in/NEVincent","https://twitter.com/NEVincent","https://instagram.com/NEVincent"]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dim:#8A6F30;
+  --ivory:#F5F0E8;--ivory-dim:#D4CCBA;
+  --navy:#0B1120;--navy-mid:#111827;--navy-light:#1C2A3E;--navy-card:#141E2E;
+  --text:#C8C0B0;--text-dim:#7A7060;
+  --green:#2ECC71;--red:#E74C3C;--yellow:#F1C40F;
+  --ff-display:'Playfair Display',Georgia,serif;
+  --ff-body:'Syne',sans-serif;
+  --ff-mono:'JetBrains Mono',monospace;
+  --radius:12px;--radius-lg:20px;
+  --transition:all 0.35s cubic-bezier(0.4,0,0.2,1)
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:var(--ff-body);font-size:16px;line-height:1.7;overflow-x:hidden;cursor:none}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:5px}
+
+/* CURSOR */
+.cursor{width:10px;height:10px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,background 0.2s}
+.cursor-trail{width:30px;height:30px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.25s ease,opacity 0.3s;opacity:0.5}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:9000;transition:opacity 0.6s ease,visibility 0.6s ease}
+.loader.done{opacity:0;visibility:hidden}
+.loader-inner{text-align:center}
+.loader-brand{font-family:var(--ff-display);font-size:4rem;font-weight:900;color:var(--gold);letter-spacing:0.15em;display:block;margin-bottom:1.5rem}
+.loader-bar{width:200px;height:2px;background:var(--navy-light);border-radius:2px;margin:0 auto 1rem;overflow:hidden}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));width:0;animation:loadFill 1.8s ease forwards;border-radius:2px}
+@keyframes loadFill{to{width:100%}}
+.loader-sub{font-family:var(--ff-mono);font-size:0.75rem;color:var(--text-dim);letter-spacing:0.1em}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4%;background:rgba(11,17,32,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.12);transition:var(--transition)}
+.nav.scrolled{padding:0.8rem 4%;border-color:rgba(201,168,76,0.25)}
+.nav-logo{font-family:var(--ff-display);font-size:1.5rem;font-weight:900;text-decoration:none}
+.logo-nev{color:var(--gold)}.logo-incent{color:var(--ivory)}
+.nav-links{display:flex;gap:2.5rem}
+.nav-link{color:var(--text);text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;position:relative;transition:color 0.25s}
+.nav-link::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s}
+.nav-link:hover{color:var(--gold)}.nav-link:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--gold);color:var(--navy);padding:0.5rem 1.4rem;border-radius:4px;text-decoration:none;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;transition:var(--transition)}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--ivory);border-radius:2px;transition:var(--transition)}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;top:0;right:0;bottom:0;width:75vw;background:var(--navy-card);border-left:1px solid rgba(201,168,76,0.15);z-index:790;padding:6rem 2rem 2rem;flex-direction:column;gap:1.5rem;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-link{color:var(--ivory);text-decoration:none;font-size:1.5rem;font-family:var(--ff-display);font-weight:700}
+.mobile-cta{display:inline-block;background:var(--gold);color:var(--navy);padding:0.8rem 1.6rem;border-radius:4px;font-weight:700;text-decoration:none;margin-top:1rem;align-self:flex-start}
+
+/* LAYOUT */
+.section{padding:8rem 0}
+.container{max-width:1200px;margin:0 auto;padding:0 4%}
+.section-label{font-family:var(--ff-mono);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+.section-title{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;color:var(--ivory);line-height:1.15;margin-bottom:3rem}
+.section-title em{color:var(--gold);font-style:italic}
+.section-header{margin-bottom:4rem}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 4% 4rem}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:60px 60px}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.15}
+.orb-1{width:500px;height:500px;background:var(--gold);top:-100px;right:-100px;animation:orbFloat 8s ease-in-out infinite}
+.orb-2{width:300px;height:300px;background:#1a3a6b;bottom:0;left:-50px;animation:orbFloat 10s ease-in-out infinite reverse}
+.orb-3{width:200px;height:200px;background:var(--gold-dim);top:50%;left:40%;animation:orbFloat 12s ease-in-out infinite 2s}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
+.hero-content{position:relative;max-width:800px}
+.hero-eyebrow{display:flex;align-items:center;gap:0.75rem;font-family:var(--ff-mono);font-size:0.75rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeUp 0.8s ease 0.5s forwards}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-family:var(--ff-display);font-size:clamp(3.5rem,9vw,7.5rem);font-weight:900;line-height:1.0;color:var(--ivory);margin-bottom:1.5rem;overflow:hidden}
+.hero-line{display:block;opacity:0;transform:translateY(60px);animation:heroLine 0.9s cubic-bezier(0.4,0,0.2,1) forwards}
+.hero-line:nth-child(1){animation-delay:0.7s}
+.hero-line:nth-child(2){animation-delay:0.85s;color:var(--gold)}
+.hero-line:nth-child(3){animation-delay:1.0s}
+.hero-line.italic{font-style:italic}
+@keyframes heroLine{to{opacity:1;transform:translateY(0)}}
+.hero-descriptor{height:2rem;overflow:hidden;margin-bottom:2rem;font-size:1.1rem;font-weight:600;color:var(--gold-light);opacity:0;animation:fadeUp 0.8s ease 1.3s forwards}
+.descriptor-item{display:none}.descriptor-item.active{display:block}
+.hero-bio{font-size:1.05rem;color:var(--text);max-width:580px;line-height:1.8;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.8s ease 1.5s forwards}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;opacity:0;animation:fadeUp 0.8s ease 1.7s forwards}
+.hero-stats{display:flex;align-items:center;gap:2rem;opacity:0;animation:fadeUp 0.8s ease 1.9s forwards}
+.stat{text-align:center}
+.stat-num{font-family:var(--ff-display);font-size:2.2rem;font-weight:900;color:var(--gold)}
+.stat-plus{font-family:var(--ff-display);font-size:1.5rem;color:var(--gold)}
+.stat-label{display:block;font-size:0.75rem;color:var(--text-dim);letter-spacing:0.06em;text-transform:uppercase}
+.stat-divider{width:1px;height:40px;background:rgba(201,168,76,0.25)}
+.hero-scroll{position:absolute;bottom:3rem;right:4%;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:var(--text-dim);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2s ease infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;border-radius:4px;font-family:var(--ff-body);font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:var(--transition)}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 25px rgba(201,168,76,0.3)}
+.btn-ghost{background:transparent;color:var(--ivory);border:1.5px solid rgba(201,168,76,0.4)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.full-width{width:100%;justify-content:center}
+
+/* MARQUEE */
+.marquee-wrap{overflow:hidden;border-top:1px solid rgba(201,168,76,0.15);border-bottom:1px solid rgba(201,168,76,0.15);padding:1.2rem 0;background:var(--navy-mid)}
+.marquee-track{display:flex;gap:2.5rem;align-items:center;width:max-content;animation:marquee 25s linear infinite;font-family:var(--ff-mono);font-size:0.85rem;color:var(--text-dim);letter-spacing:0.08em}
+.marquee-track span:not(.bull){color:var(--ivory-dim)}.bull{color:var(--gold)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ABOUT */
+.about{background:var(--navy-mid)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text{color:var(--text);margin-bottom:1.2rem;line-height:1.85}
+.about-text strong{color:var(--gold)}
+.about-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem}
+.tag{background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:0.3rem 0.8rem;font-size:0.78rem;font-family:var(--ff-mono);letter-spacing:0.05em;transition:var(--transition)}
+.tag:hover{background:rgba(201,168,76,0.2);border-color:var(--gold)}
+.about-card-wrap{position:relative}
+.about-card{background:#0D1525;border:1px solid rgba(201,168,76,0.2);border-radius:var(--radius-lg);overflow:hidden;position:relative;z-index:1;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
+.card-header{display:flex;gap:0.5rem;padding:0.75rem 1rem;background:#080E1A;border-bottom:1px solid rgba(255,255,255,0.05)}
+.card-dot{width:12px;height:12px;border-radius:50%}
+.card-dot.green{background:var(--green)}.card-dot.yellow{background:var(--yellow)}.card-dot.red{background:var(--red)}
+.card-body{padding:1.5rem}
+.code-block{font-family:var(--ff-mono);font-size:0.82rem;line-height:1.8;white-space:pre-wrap;color:#A0A8B8}
+.cm{color:#4A6070}.ck{color:#C792EA}.cv{color:#82AAFF}.cp{color:#89DDFF}.cs{color:#C3E88D}
+.about-card-glow{position:absolute;inset:-40px;background:radial-gradient(circle at 50% 50%,rgba(201,168,76,0.08),transparent 70%);pointer-events:none}
+
+/* PROJECTS */
+.work{background:var(--navy)}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.project-card{background:var(--navy-card);border:1px solid rgba(201,168,76,0.1);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;gap:1.5rem}
+.project-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.project-card.featured{grid-column:1 / -1;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.project-number{position:absolute;top:1.5rem;right:1.5rem;font-family:var(--ff-display);font-size:4rem;font-weight:900;color:rgba(201,168,76,0.06);line-height:1;pointer-events:none}
+.project-meta{display:flex;gap:0.5rem;flex-wrap:wrap}
+.project-tag{background:rgba(201,168,76,0.08);color:var(--gold-dim);border:1px solid rgba(201,168,76,0.15);border-radius:3px;padding:0.2rem 0.6rem;font-size:0.7rem;font-family:var(--ff-mono);letter-spacing:0.07em}
+.project-title{font-family:var(--ff-display);font-size:1.8rem;font-weight:700;color:var(--ivory);margin:0.5rem 0}
+.project-desc{color:var(--text);font-size:0.92rem;line-height:1.7}
+.project-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem}
+.project-stack span{font-family:var(--ff-mono);font-size:0.72rem;color:var(--text-dim);background:rgba(255,255,255,0.03);padding:0.2rem 0.5rem;border-radius:3px}
+.project-link{color:var(--gold);font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;margin-top:0.75rem;transition:var(--transition)}
+.project-link:hover{color:var(--gold-light)}
+.project-visual{min-height:160px;border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center}
+
+/* Vault visual */
+.vault-visual{background:linear-gradient(135deg,#0A1020 0%,#1A0A2E 100%);padding:1.5rem;min-width:280px}
+.pv-inner{width:100%}
+.pv-card{background:linear-gradient(135deg,#1A1030,#2A1A50);border:1px solid rgba(201,168,76,0.3);border-radius:12px;padding:1.5rem;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+.pv-label{font-family:var(--ff-mono);font-size:0.65rem;color:var(--gold-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem}
+.pv-amount{font-family:var(--ff-display);font-size:1.6rem;font-weight:900;color:var(--gold);margin-bottom:1rem}
+.pv-amount span{font-size:1rem;color:var(--gold-dim)}
+.pv-row{display:flex;justify-content:space-between}
+.pv-chip{font-family:var(--ff-mono);font-size:0.7rem;color:var(--ivory-dim);background:rgba(255,255,255,0.05);padding:0.3rem 0.6rem;border-radius:4px}
+
+/* EduPacify visual */
+.edu-visual{background:var(--navy-light);padding:1.5rem;flex-direction:column;gap:0.75rem}
+.edu-bar-wrap{width:100%;display:flex;flex-direction:column;gap:0.7rem}
+.edu-bar{display:flex;align-items:center;gap:0.75rem;font-family:var(--ff-mono);font-size:0.7rem;color:var(--text-dim)}
+.edu-bar div{flex:1;height:6px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden;position:relative}
+.edu-bar div::after{content:'';position:absolute;left:0;top:0;height:100%;width:var(--w);background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:3px;animation:barFill 1.5s ease forwards}
+@keyframes barFill{from{width:0}to{width:var(--w)}}
+
+/* EarthPrint visual */
+.earth-visual{background:var(--navy-light)}
+.earth-circle{position:relative;width:100px;height:100px}
+.earth-ring{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,0.05);stroke-width:8}
+.ring-fill{fill:none;stroke:var(--gold);stroke-width:8;stroke-linecap:round}
+.earth-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:1.2rem;font-weight:700;color:var(--gold)}
+
+/* Amiyi visual */
+.amiyi-visual{background:linear-gradient(135deg,#0A1A0A,#0F1F0F);flex-direction:column;gap:0.5rem}
+.amiyi-leaves{font-size:1.5rem;display:flex;gap:0.5rem}
+.amiyi-text{font-family:var(--ff-display);font-size:1.2rem;font-weight:700;color:#7CBF7C;text-align:center}
+
+/* VEMFAG visual */
+.vemfag-visual{background:linear-gradient(135deg,#0A1A08,#1A2A0A)}
+.vemfag-logo{font-family:var(--ff-display);font-size:1.4rem;font-weight:900;color:#5CAD3C;text-align:center}
+.vemfag-logo span{display:block;font-size:0.7rem;letter-spacing:0.2em;color:var(--gold);font-family:var(--ff-mono);margin-top:0.25rem}
+
+/* SiteGab visual */
+.sitegab-visual{background:linear-gradient(135deg,#0A0F1A,#0F1A2E);flex-direction:column;gap:0.6rem;padding:1.5rem}
+.sg-url{font-family:var(--ff-mono);font-size:0.65rem;color:var(--gold-dim);background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);border-radius:4px;padding:0.3rem 0.6rem;width:100%;text-align:center}
+.sg-arrow{color:var(--gold);font-size:1.2rem;text-align:center}
+.sg-site{font-family:var(--ff-display);font-size:0.9rem;font-weight:700;color:var(--ivory-dim);text-align:center}
+
+/* SERVICES */
+.services{background:var(--navy-mid)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{background:var(--navy-card);border:1px solid rgba(201,168,76,0.1);border-radius:var(--radius-lg);padding:2rem 1.8rem;position:relative;overflow:hidden;transition:var(--transition)}
+.service-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,0,0,0.3)}
+.service-card.highlight{border-color:rgba(201,168,76,0.35);background:linear-gradient(135deg,var(--navy-card),rgba(201,168,76,0.05))}
+.service-badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:3px;margin-bottom:1rem}
+.service-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.service-card h3{font-family:var(--ff-display);font-size:1.2rem;color:var(--ivory);margin-bottom:0.75rem}
+.service-card p{font-size:0.9rem;color:var(--text);line-height:1.7;margin-bottom:1.5rem}
+.service-price{font-family:var(--ff-mono);font-size:0.9rem;color:var(--gold);font-weight:600}
+
+/* QUOTE */
+.quote-section{background:var(--navy);padding:6rem 0;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1)}
+.big-quote{font-family:var(--ff-display);font-size:clamp(1.4rem,3vw,2rem);font-style:italic;color:var(--ivory);text-align:center;line-height:1.6;max-width:800px;margin:0 auto;position:relative}
+.quote-mark{display:block;font-size:6rem;line-height:0.5;color:var(--gold);opacity:0.3;text-align:center;margin-bottom:1rem}
+.quote-author{display:block;font-family:var(--ff-mono);font-size:0.75rem;color:var(--gold);font-style:normal;letter-spacing:0.1em;text-transform:uppercase;margin-top:1.5rem}
+
+/* CONTACT */
+.contact{background:var(--navy-mid)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.contact-intro{font-size:1.05rem;color:var(--text);line-height:1.8;margin-bottom:2.5rem}
+.contact-items{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem}
+.contact-item{display:flex;gap:1rem;align-items:center;text-decoration:none;background:rgba(255,255,255,0.02);border:1px solid rgba(201,168,76,0.1);border-radius:var(--radius);padding:1rem 1.2rem;transition:var(--transition)}
+.contact-item:hover{border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.04)}
+.ci-icon{font-size:1.3rem;flex-shrink:0}
+.ci-label{display:block;font-family:var(--ff-mono);font-size:0.65rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:0.2rem}
+.ci-value{display:block;font-size:0.9rem;color:var(--ivory)}
+.socials{display:flex;gap:1.5rem}
+.social-link{color:var(--text-dim);text-decoration:none;font-size:0.85rem;font-weight:600;transition:color 0.25s}
+.social-link:hover{color:var(--gold)}
+.contact-form{display:flex;flex-direction:column;gap:1.2rem}
+.form-group{display:flex;flex-direction:column;gap:0.5rem}
+.form-group label{font-family:var(--ff-mono);font-size:0.72rem;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.15);border-radius:var(--radius);padding:0.85rem 1rem;color:var(--ivory);font-family:var(--ff-body);font-size:0.95rem;transition:border-color 0.25s;outline:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-dim)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);background:rgba(201,168,76,0.04)}
+.form-group select{appearance:none;cursor:pointer}.form-group select option{background:var(--navy-card)}
+.form-note{font-family:var(--ff-mono);font-size:0.8rem;color:var(--gold);text-align:center;min-height:1.2rem}
+
+/* FOOTER */
+.footer{background:var(--navy-card);border-top:1px solid rgba(201,168,76,0.12);padding:4rem 0 2rem}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3rem;gap:2rem}
+.footer-brand p{color:var(--text-dim);font-size:0.9rem;line-height:1.7;margin-top:0.75rem;max-width:260px}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-links a{color:var(--text-dim);text-decoration:none;font-size:0.85rem;transition:color 0.25s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem}
+.footer-bottom span{font-family:var(--ff-mono);font-size:0.72rem;color:var(--text-dim);letter-spacing:0.06em}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:flex}
+  .mobile-menu{display:flex}
+  .hero{padding:6rem 4% 4rem}
+  .hero-stats{gap:1rem}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .footer-top{flex-direction:column}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .hero-actions{flex-direction:column}
+  .hero-stats{flex-wrap:wrap;justify-content:center}
+  .stat-divider{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <span class="loader-brand">NEV</span>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <span class="loader-sub">Loading portfolio...</span>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="#home" class="nav-logo"><span class="logo-nev">NEV</span><span class="logo-incent">incent</span></a>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#work" class="nav-link">Work</a>
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+  <a href="mailto:nwachukwuihechukwu14@gmail.com" class="nav-cta">Hire Me</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#work" class="mobile-link">Work</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="mailto:nwachukwuihechukwu14@gmail.com" class="mobile-cta">Get in Touch</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span>Available for Projects</span>
+      <span class="dot"></span>
+      <span>Abakaliki, Nigeria</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-line" >Nwachukwu</span>
+      <span class="hero-line italic">Emmanuel</span>
+      <span class="hero-line">Vincent</span>
+    </h1>
+    <div class="hero-descriptor">
+      <span class="descriptor-item active">Full-Stack Developer</span>
+      <span class="descriptor-item">Fintech Engineer</span>
+      <span class="descriptor-item">Creative Technologist</span>
+      <span class="descriptor-item">Founder, NEVincent Technologies</span>
+    </div>
+    <p class="hero-bio">Building digital products that move Africa forward — from neobank fintech infrastructure to interactive platforms, branded experiences, and community websites. Every line of code has a purpose.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-count="10">0</span><span class="stat-plus">+</span><span class="stat-label">Projects Built</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-count="3">0</span><span class="stat-plus">+</span><span class="stat-label">Years Experience</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-plus">%</span><span class="stat-label">Commitment</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>React</span><span class="bull">&bull;</span>
+    <span>Node.js</span><span class="bull">&bull;</span>
+    <span>Fintech</span><span class="bull">&bull;</span>
+    <span>Paystack</span><span class="bull">&bull;</span>
+    <span>Flutterwave</span><span class="bull">&bull;</span>
+    <span>Web3 / NFTs</span><span class="bull">&bull;</span>
+    <span>Express.js</span><span class="bull">&bull;</span>
+    <span>UI / UX Design</span><span class="bull">&bull;</span>
+    <span>Photography</span><span class="bull">&bull;</span>
+    <span>Brand Identity</span><span class="bull">&bull;</span>
+    <span>React</span><span class="bull">&bull;</span>
+    <span>Node.js</span><span class="bull">&bull;</span>
+    <span>Fintech</span><span class="bull">&bull;</span>
+    <span>Paystack</span><span class="bull">&bull;</span>
+    <span>Flutterwave</span><span class="bull">&bull;</span>
+    <span>Web3 / NFTs</span><span class="bull">&bull;</span>
+    <span>Express.js</span><span class="bull">&bull;</span>
+    <span>UI / UX Design</span><span class="bull">&bull;</span>
+    <span>Photography</span><span class="bull">&bull;</span>
+    <span>Brand Identity</span><span class="bull">&bull;</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="section-label">Who I Am</div>
+        <h2 class="section-title">Code. <em>Create.</em><br>Consecrate.</h2>
+        <p class="about-text">I'm Vincent — a full-stack developer and the founder of <strong>NEVincent Technologies</strong> in Abakaliki, Ebonyi State, Nigeria. I build with purpose: fintech systems, interactive learning platforms, branded web experiences, and community infrastructure.</p>
+        <p class="about-text">My work sits at the intersection of clean engineering and deliberate design. Whether it's a neobank with JWT-secured webhooks, a carbon footprint tracker, or a village website preserving culture and heritage — I bring the same precision to all of it.</p>
+        <p class="about-text">Faith-rooted. Barcelona-spirited. Always building.</p>
+        <div class="about-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js / Express</span>
+          <span class="tag">Paystack &amp; Flutterwave</span>
+          <span class="tag">JWT &amp; Security</span>
+          <span class="tag">Web3 / MetaMask</span>
+          <span class="tag">Vanilla JS / HTML / CSS</span>
+          <span class="tag">Visual Design</span>
+          <span class="tag">Photography</span>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="about-card-wrap">
+          <div class="about-card">
+            <div class="card-header">
+              <span class="card-dot green"></span>
+              <span class="card-dot yellow"></span>
+              <span class="card-dot red"></span>
+            </div>
+            <div class="card-body">
+              <pre class="code-block"><span class="cm">// NEVincent Technologies</span>
+<span class="ck">const</span> <span class="cv">vincent</span> = {
+  <span class="cp">name</span>: <span class="cs">"Nwachukwu Emmanuel"</span>,
+  <span class="cp">alias</span>: <span class="cs">"NEVincent"</span>,
+  <span class="cp">location</span>: <span class="cs">"Abakaliki, Nigeria"</span>,
+  <span class="cp">role</span>: <span class="cs">"Founder &amp; Lead Dev"</span>,
+  <span class="cp">stack</span>: [
+    <span class="cs">"React"</span>, <span class="cs">"Node.js"</span>,
+    <span class="cs">"Express"</span>, <span class="cs">"MongoDB"</span>
+  ],
+  <span class="cp">faith</span>: <span class="cs">"Methodist"</span>,
+  <span class="cp">club</span>: <span class="cs">"FC Barcelona &#127988;"</span>,
+  <span class="cp">available</span>: <span class="ck">true</span>
+};</pre>
+            </div>
+          </div>
+          <div class="about-card-glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work section" id="work">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Selected Projects</div>
+      <h2 class="section-title">Work That <em>Ships</em></h2>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Vault -->
+      <article class="project-card featured">
+        <div class="project-number">01</div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="project-tag">Fintech</span>
+            <span class="project-tag">Full-Stack</span>
+            <span class="project-tag">React</span>
+          </div>
+          <h3 class="project-title">Vault</h3>
+          <p class="project-desc">A Nigerian neobank with instant transfers, international payments, airtime top-up, bill payments, and smart savings. Dark-gold luxury aesthetic. Node.js/Express backend secured with JWT, Helmet.js, Joi validation, rate limiting, and full webhook infrastructure for Paystack and Flutterwave.</p>
+          <div class="project-stack">
+            <span>React</span><span>Node.js</span><span>Express</span><span>Paystack</span><span>Flutterwave</span><span>VTpass</span><span>JWT</span><span>Helmet.js</span>
+          </div>
+        </div>
+        <div class="project-visual vault-visual">
+          <div class="pv-inner">
+            <div class="pv-card">
+              <div class="pv-label">Balance</div>
+              <div class="pv-amount">&#8358; 482,300<span>.00</span></div>
+              <div class="pv-row">
+                <span class="pv-chip">VAULT</span>
+                <span class="pv-chip">&#9679;&#9679;&#9679;&#9679; 4821</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EduPacify -->
+      <article class="project-card">
+        <div class="project-number">02</div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="project-tag">EdTech</span>
+            <span class="project-tag">Vanilla JS</span>
+          </div>
+          <h3 class="project-title">EduPacify</h3>
+          <p class="project-desc">An Edpuzzle-style interactive learning platform. Videos pause mid-playback to trigger quizzes, tracking scores and unlocking progress. Features a course library, in-video notes, Q&amp;A, XP system, and streak tracking. Built entirely in vanilla HTML, CSS, and JavaScript.</p>
+          <div class="project-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Video API</span></div>
+        </div>
+        <div class="project-visual edu-visual">
+          <div class="edu-bar-wrap">
+            <div class="edu-bar" style="--w:85%"><span>Quiz Score</span><div></div></div>
+            <div class="edu-bar" style="--w:70%"><span>Streak</span><div></div></div>
+            <div class="edu-bar" style="--w:92%"><span>XP</span><div></div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- EarthPrint -->
+      <article class="project-card">
+        <div class="project-number">03</div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="project-tag">Climate Tech</span>
+            <span class="project-tag">React</span>
+          </div>
+          <h3 class="project-title">EarthPrint</h3>
+          <p class="project-desc">A carbon footprint tracker built in React. Category-based sliders translate lifestyle choices into real-world environmental impact data, with personalized reduction tips surfaced intelligently per user profile.</p>
+          <div class="project-stack"><span>React</span><span>CSS</span><span>Data Visualization</span></div>
+        </div>
+        <div class="project-visual earth-visual">
+          <div class="earth-circle">
+            <svg viewBox="0 0 100 100" class="earth-ring">
+              <circle cx="50" cy="50" r="42" class="ring-bg"/>
+              <circle cx="50" cy="50" r="42" class="ring-fill" stroke-dasharray="185 264"/>
+            </svg>
+            <span class="earth-pct">70%</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- SiteGab -->
+      <article class="project-card">
+        <div class="project-number">04</div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="project-tag">AI Tool</span>
+            <span class="project-tag">SaaS Concept</span>
+          </div>
+          <h3 class="project-title">SiteGab</h3>
+          <p class="project-desc">An AI-powered web app that identifies businesses without an online presence and auto-generates professional websites for them. Built as a freelance prospecting and fulfilment tool — find the client, build the site, close the deal, all in one flow.</p>
+          <div class="project-stack"><span>AI Integration</span><span>Web Scraping</span><span>Auto-Generation</span><span>Freelance</span></div>
+        </div>
+        <div class="project-visual sitegab-visual">
+          <div class="sg-url">businessname.com — No site found</div>
+          <div class="sg-arrow">&#8595; AI</div>
+          <div class="sg-site">Professional site generated &#10003;</div>
+        </div>
+      </article>
+
+      <!-- Amiyi Obinohia -->
+      <article class="project-card">
+        <div class="project-number">05</div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="project-tag">Community</span>
+            <span class="project-tag">HTML / CSS</span>
+          </div>
+          <h3 class="project-title">Amiyi Obinohia Village</h3>
+          <p class="project-desc">Official website for Amiyi Obinohia, Isuikwuato LGA, Abia State. Dark forest-and-gold aesthetic with full multi-page coverage: History, Culture, Religion, Community, Economy, and Contact. Hosted at AmiyiObinohia.online under NEVincent Technologies.</p>
+          <div class="project-stack"><span>HTML</span><span>CSS</span><span>Netlify</span></div>
+          <a href="https://AmiyiObinohia.online" target="_blank" rel="noopener" class="project-link">Visit Site &#8599;</a>
+        </div>
+        <div class="project-visual amiyi-visual">
+          <div class="amiyi-leaves"><span>&#127807;</span><span>&#127807;</span><span>&#127807;</span></div>
+          <span class="amiyi-text">Amiyi<br>Obinohia</span>
+        </div>
+      </article>
+
+      <!-- VEMFAG -->
+      <article class="project-card">
+        <div class="project-number">06</div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="project-tag">Branding</span>
+            <span class="project-tag">Web Design</span>
+          </div>
+          <h3 class="project-title">VEMFAG Ventures</h3>
+          <p class="project-desc">Full brand identity and website for a general merchandise trading business in Ebonyi State. Green and gold palette with Playfair Display and Raleway typography. Multi-section website, logo design, and marketing flyer graphics.</p>
+          <div class="project-stack"><span>HTML</span><span>CSS</span><span>Brand Design</span><span>Logo Design</span></div>
+        </div>
+        <div class="project-visual vemfag-visual">
+          <div class="vemfag-logo">VEMFAG<span>VENTURES</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">What I Offer</div>
+      <h2 class="section-title">Services &amp; <em>Pricing</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">&#9889;</span>
+        <h3>Full-Stack Web Development</h3>
+        <p>End-to-end web apps — React frontends, Node.js/Express backends, database design, API integration, and deployment.</p>
+        <div class="service-price">From &#8358;80,000</div>
+      </div>
+      <div class="service-card highlight">
+        <div class="service-badge">Most Popular</div>
+        <span class="service-icon">&#128179;</span>
+        <h3>Fintech Integration</h3>
+        <p>Paystack, Flutterwave, VTpass, and webhook infrastructure. Payment flows, airtime APIs, subscription billing, and secure JWT-protected backends.</p>
+        <div class="service-price">From &#8358;120,000</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#127912;</span>
+        <h3>Brand &amp; Web Design</h3>
+        <p>Logo design, flyer graphics, brand identity kits, and conversion-focused websites with dark-luxury or bespoke aesthetics.</p>
+        <div class="service-price">From &#8358;40,000</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#128247;</span>
+        <h3>Photography &amp; Content</h3>
+        <p>Event photography, content creation, social media visuals, and editorial photography for brands and institutions.</p>
+        <div class="service-price">From &#8358;25,000</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#128279;</span>
+        <h3>Web3 &amp; NFT Development</h3>
+        <p>Smart contract deployment with Hardhat and Remix IDE, MetaMask integration, NFT minting flows, and blockchain-connected frontends.</p>
+        <div class="service-price">From &#8358;100,000</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#128200;</span>
+        <h3>Freelance &amp; Consulting</h3>
+        <p>Technical consulting, code reviews, architecture planning, and strategic product advice for startups and growing businesses.</p>
+        <div class="service-price">From &#8358;30,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="container">
+    <blockquote class="big-quote">
+      <span class="quote-mark">"</span>
+      Every product I build carries a signature — clean code, deliberate design, and a conviction that technology is not neutral. It either empowers or it doesn't. Mine empowers.
+      <span class="quote-author">— Vincent, NEVincent Technologies</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's Build <em>Something</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <p class="contact-intro">Whether you need a fintech app, a branded website, a community platform, or a custom web tool — I'm open to work. Let's talk.</p>
+        <div class="contact-items">
+          <a href="mailto:nwachukwuihechukwu14@gmail.com" class="contact-item">
+            <span class="ci-icon">&#9993;</span>
+            <div><span class="ci-label">Email</span><span class="ci-value">nwachukwuihechukwu14@gmail.com</span></div>
+          </a>
+          <a href="https://wa.me/2347080499730" target="_blank" rel="noopener" class="contact-item">
+            <span class="ci-icon">&#128241;</span>
+            <div><span class="ci-label">WhatsApp</span><span class="ci-value">+234 708 049 9730</span></div>
+          </a>
+          <div class="contact-item">
+            <span class="ci-icon">&#128205;</span>
+            <div><span class="ci-label">Location</span><span class="ci-value">Abakaliki, Ebonyi State, Nigeria</span></div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://linkedin.com/in/NEVincent" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+          <a href="https://twitter.com/NEVincent" target="_blank" rel="noopener" class="social-link">Twitter / X</a>
+          <a href="https://instagram.com/NEVincent" target="_blank" rel="noopener" class="social-link">Instagram</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm" onsubmit="handleForm(event)">
+        <div class="form-group">
+          <label for="fname">Your Name</label>
+          <input type="text" id="fname" name="fname" placeholder="John Doe" required/>
+        </div>
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="femail" placeholder="you@example.com" required/>
+        </div>
+        <div class="form-group">
+          <label for="fservice">Service Needed</label>
+          <select id="fservice" name="fservice">
+            <option value="">Select a service</option>
+            <option>Full-Stack Web Development</option>
+            <option>Fintech Integration</option>
+            <option>Brand &amp; Web Design</option>
+            <option>Photography &amp; Content</option>
+            <option>Web3 / NFT Development</option>
+            <option>Freelance &amp; Consulting</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fmessage">Your Message</label>
+          <textarea id="fmessage" name="fmessage" rows="5" placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary full-width">Send Message</button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="nav-logo"><span class="logo-nev">NEV</span><span class="logo-incent">incent</span></span>
+        <p>Full-Stack Developer. Fintech Engineer.<br>Creative Technologist. Abakaliki, Nigeria.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 NEVincent Technologies. All rights reserved.</span>
+      <span>Built with precision by NEVincent</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // LOADER
+  window.addEventListener('load',()=>{
+    setTimeout(()=>{
+      const l=document.getElementById('loader');
+      if(l) l.classList.add('done');
+    },2000);
+  });
+
+  // CURSOR
+  const cur=document.getElementById('cursor');
+  const trail=document.getElementById('cursorTrail');
+  if(cur&&trail){
+    let mx=0,my=0,tx=0,ty=0;
+    document.addEventListener('mousemove',e=>{
+      mx=e.clientX;my=e.clientY;
+      cur.style.left=mx+'px';cur.style.top=my+'px';
+    });
+    function animTrail(){
+      tx+=(mx-tx)*0.12;ty+=(my-ty)*0.12;
+      trail.style.left=tx+'px';trail.style.top=ty+'px';
+      requestAnimationFrame(animTrail);
+    }
+    animTrail();
+    document.addEventListener('mousedown',()=>{cur.style.transform='translate(-50%,-50%) scale(0.6)';trail.style.transform='translate(-50%,-50%) scale(0.8)';});
+    document.addEventListener('mouseup',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';trail.style.transform='translate(-50%,-50%) scale(1)';});
+  }
+
+  // NAV SCROLL
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{ if(nav) nav.classList.toggle('scrolled',window.scrollY>60); });
+
+  // MOBILE MENU
+  const tog=document.getElementById('navToggle');
+  const mob=document.getElementById('mobileMenu');
+  if(tog&&mob){
+    tog.addEventListener('click',()=>mob.classList.toggle('open'));
+    mob.querySelectorAll('.mobile-link,.mobile-cta').forEach(l=>l.addEventListener('click',()=>mob.classList.remove('open')));
+  }
+
+  // SMOOTH SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+
+  // DESCRIPTOR ROTATOR
+  const items=document.querySelectorAll('.descriptor-item');
+  let cur2=0;
+  if(items.length>1){
+    setInterval(()=>{
+      items[cur2].classList.remove('active');
+      cur2=(cur2+1)%items.length;
+      items[cur2].classList.add('active');
+    },2500);
+  }
+
+  // SCROLL REVEAL
+  const revEls=document.querySelectorAll('.project-card,.service-card,.about-grid,.contact-grid,.section-header,.big-quote');
+  revEls.forEach(el=>el.classList.add('reveal'));
+  const revObs=new IntersectionObserver((entries)=>{
+    entries.forEach((entry,i)=>{
+      if(entry.isIntersecting){
+        setTimeout(()=>entry.target.classList.add('visible'),i*80);
+        revObs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12});
+  revEls.forEach(el=>revObs.observe(el));
+
+  // STATS COUNTER
+  function animCount(el){
+    const target=parseInt(el.getAttribute('data-count'),10);
+    const start=performance.now();
+    function tick(now){
+      const p=Math.min((now-start)/1800,1);
+      const e=1-Math.pow(1-p,4);
+      el.textContent=Math.floor(e*target);
+      if(p<1) requestAnimationFrame(tick);
+      else el.textContent=target;
+    }
+    requestAnimationFrame(tick);
+  }
+  const statsObs=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){animCount(entry.target);statsObs.unobserve(entry.target);}
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.stat-num[data-count]').forEach(el=>statsObs.observe(el));
+
+  // PROJECT PARALLAX
+  document.querySelectorAll('.project-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-0.5;
+      const y=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform=`translateY(-4px) rotateX(${-y*4}deg) rotateY(${x*4}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+  });
+
+  // CONTACT FORM
+  window.handleForm=function(e){
+    e.preventDefault();
+    const f=e.target;
+    const name=f.fname.value.trim();
+    const email=f.femail.value.trim();
+    const service=f.fservice.value;
+    const message=f.fmessage.value.trim();
+    const note=document.getElementById('formNote');
+    const sub=encodeURIComponent('Portfolio Inquiry'+(service?' — '+service:'')+' from '+name);
+    const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nService: '+(service||'Not specified')+'\n\nMessage:\n'+message);
+    window.location.href='mailto:nwachukwuihechukwu14@gmail.com?subject='+sub+'&body='+body;
+    if(note){ note.textContent='Opening your email client...'; setTimeout(()=>{note.textContent='';},4000); }
+  };
+
+})();
+</script>
+</body>
+</html>
